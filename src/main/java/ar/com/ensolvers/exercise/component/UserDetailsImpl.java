@@ -17,11 +17,13 @@ public class UserDetailsImpl implements UserDetails {
 
     private String username;
 
+    @JsonIgnore
     private String email;
 
     @JsonIgnore
     private String password;
 
+    @JsonIgnore
     private Collection<? extends GrantedAuthority> authorities;
 
     public UserDetailsImpl(Long id, String username, String email, String password,
@@ -71,21 +73,25 @@ public class UserDetailsImpl implements UserDetails {
         return username;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isEnabled() {
         return true;

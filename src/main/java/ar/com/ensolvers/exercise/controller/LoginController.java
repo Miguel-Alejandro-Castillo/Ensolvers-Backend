@@ -30,10 +30,9 @@ public class LoginController {
     private JwtUtils jwtUtils;
 
     @CrossOrigin(origins = "*", maxAge = 3600)
-    @PostMapping("/login")
+    @PostMapping("/auth/login")
     public ResponseEntity<?> authenticateUser(@RequestBody User user) {
-        //passwprd 1234
-        // $2a$10$ztAHRNlqHJe88CZi2xcBvODErftMPrA4nHUwFky8Iv9IgPm2a.ZZC
+
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 
@@ -55,15 +54,6 @@ public class LoginController {
                 .headers(responseHeaders)
                 .body(userDetails);
 
-        /*
-        return ResponseEntity.ok(new JwtResponse(jwt,
-                userDetails.getId(),
-                userDetails.getUsername(),
-                userDetails.getEmail(),
-                roles));
-
-         */
     }
-
 
 }
