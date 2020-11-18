@@ -4,6 +4,7 @@ import ar.com.ensolvers.exercise.dao.FolderTaskRepository;
 import ar.com.ensolvers.exercise.model.FolderTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class FolderTaskService {
@@ -15,7 +16,7 @@ public class FolderTaskService {
         return this.folderTaskRepository.getOne(id);
     }
 
-    public FolderTask findByOwnerId(Long ownerId) {
+    public List<FolderTask> findByOwnerId(Long ownerId) {
         return this.folderTaskRepository.findByOwnerId(ownerId);
     }
 

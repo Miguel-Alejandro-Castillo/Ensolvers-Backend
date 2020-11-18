@@ -1,7 +1,19 @@
 package ar.com.ensolvers.exercise.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import javax.persistence.*;
 
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = ItemTask.class, name = "ITEM"),
+        @JsonSubTypes.Type(value = FolderTask.class, name = "FOLDER")
+})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name="TASKS")
 @Inheritance(strategy=InheritanceType.JOINED)
@@ -14,7 +26,7 @@ public class Task {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne(optional = false, cascade = { CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
+    @ManyToOne(optional = false)
     @JoinColumn(name = "owner_id")
     private User owner;
 

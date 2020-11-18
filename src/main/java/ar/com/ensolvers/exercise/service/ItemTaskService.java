@@ -4,6 +4,7 @@ import ar.com.ensolvers.exercise.dao.ItemTaskRepository;
 import ar.com.ensolvers.exercise.model.ItemTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class ItemTaskService {
@@ -25,5 +26,9 @@ public class ItemTaskService {
 
     public ItemTask findById(Long id) {
         return this.itemTaskRepository.getOne(id);
+    }
+
+    public List<ItemTask> findByOwnerId(Long ownerId) {
+        return this.itemTaskRepository.findByOwnerId(ownerId);
     }
 }

@@ -1,9 +1,11 @@
 package ar.com.ensolvers.exercise.model;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonTypeName("FOLDER")
 @Entity
 @Table(name="FOLDERS_TASKS")
 @PrimaryKeyJoinColumn(referencedColumnName="id")

@@ -1,9 +1,11 @@
 package ar.com.ensolvers.exercise.controller;
 
+import ar.com.ensolvers.exercise.model.FolderTask;
 import ar.com.ensolvers.exercise.model.ItemTask;
 import ar.com.ensolvers.exercise.service.ItemTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 public class ItemTaskController {
@@ -16,6 +18,11 @@ public class ItemTaskController {
         return this.itemTaskService.findById(id);
     }
 
+    @GetMapping("/tasks/items/{ownerId}")
+    List<ItemTask> findByOwnerId(@PathVariable Long ownerId) {
+        return this.itemTaskService.findByOwnerId(ownerId);
+    }
+
     @PostMapping("/tasks/item/create")
     public ItemTask create(@RequestBody ItemTask itemTask) {
         return this.itemTaskService.create(itemTask);
@@ -26,7 +33,7 @@ public class ItemTaskController {
         return this.itemTaskService.edit(itemTask);
     }
 
-    @DeleteMapping("/tasks/item/{id}")
+    @DeleteMapping("/tasks/item/delete/{id}")
     public void deleteById(@PathVariable Long id) {
         this.itemTaskService.deleteById(id);
     }
