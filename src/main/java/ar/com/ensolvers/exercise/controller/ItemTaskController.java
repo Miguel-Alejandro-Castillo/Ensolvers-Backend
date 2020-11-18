@@ -1,6 +1,5 @@
 package ar.com.ensolvers.exercise.controller;
 
-import ar.com.ensolvers.exercise.model.FolderTask;
 import ar.com.ensolvers.exercise.model.ItemTask;
 import ar.com.ensolvers.exercise.service.ItemTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
