@@ -7,7 +7,7 @@
 * Java openjdk 8
 * Intellij Idea(Optional)
 
-####commands to run the application(see script up.sh)
+#### commands to run the application(see script up.sh)
 
 1. chmod +x up.sh
 2. ./up.sh <datasource.username> <datasource.password> <datasource.url>
